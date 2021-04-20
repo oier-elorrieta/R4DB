@@ -1,4 +1,4 @@
-package Modelo;
+package ModeloBBDD;
 
 public class Kontsultak {
 
