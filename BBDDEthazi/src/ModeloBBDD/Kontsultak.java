@@ -91,11 +91,11 @@ public class Kontsultak {
 
 	static final String insertOfrece = "INSERT INTO ofrece VALUES";
 
-	static final String insertNumTransOperaciones = "insert into operaciones (NumTrans) values (";
+	static final String insertNumTransOperaciones = "insert into operaciones (NumTrans , TipoOperacion) VALUES";
 
 	// *****************************************************************************************************************************************************************************************************
 
-	static final String updateOperaciones = "update operaciones set Fecha =";
+	static final String updateOperaciones = "update operaciones set Total_Operaciones =";
 
 	static final String updateTiene = "update tiene set N_Unidades =";
 
