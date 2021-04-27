@@ -100,6 +100,8 @@ public class Kontsultak {
 	public static final String updateTiene = "update tiene set N_Unidades =";
 
 	public static final String updateIncluye = "update incluye set Num_Platos ="; 
+	
+	public static final String updateStock = "update vende set Stock =";
 
 	// *****************************************************************************************************************************************************************************************************
 
