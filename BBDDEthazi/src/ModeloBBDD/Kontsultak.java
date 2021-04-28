@@ -68,6 +68,8 @@ public class Kontsultak {
 	public static final String selectOperazioMota = "select TipoOperacion from operaciones where NumTrans = ("+selectMaxNumTrans+")";
 	
 	public static final String selectProduktuMota = "select Tipo from producto where Nombre =";
+	
+	public static final String selectProduktuSaltzekoPrezioa = "select Precio_Compra from producto where Nombre =";
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -107,4 +109,9 @@ public class Kontsultak {
 
 	public static final String delete = "delete from operaciones where NumTrans = (select max(NumTrans) from comanda)";
 
+	// *****************************************************************************************************************************************************************************************************
+
+	public static final String function = "select importeTotal()";
+
+	
 }
