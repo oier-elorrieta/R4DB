@@ -107,7 +107,7 @@ public class Kontsultak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static final String delete = "delete from operaciones where NumTrans = (select max(NumTrans) from comanda)";
+	public static final String delete = "delete from operaciones where NumTrans = ";/*(select max(NumTrans) from comanda)";*/
 
 	// *****************************************************************************************************************************************************************************************************
 
