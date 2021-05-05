@@ -26,4 +26,23 @@ public class metodoakFuntzioakDeitu {
 		}
 		return diruTotala;
 	}
+	
+	public static float funtzioprob(String prodA, String prodB) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		float emaitza = 0;
+		String query1 = ("select proabilitatea('"+prodA+"','"+prodB+"')");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				emaitza = re.getFloat("proabilitatea('"+prodA+"','"+prodB+"')");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater motak", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+		return emaitza;
+	}
 }
