@@ -27,22 +27,42 @@ public class metodoakFuntzioakDeitu {
 		return diruTotala;
 	}
 	
-	public static float funtzioprob(String prodA, String prodB) {
+	public static float funtzioProbabilitateOrokorra(String prodA, String prodB) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		float emaitza = 0;
-		String query1 = ("select proabilitatea('"+prodA+"','"+prodB+"')");
+		String query1 = ("select funtzioprobabilitateOrokorra('"+prodA+"','"+prodB+"')");
 		try {
 			ResultSet re;
 			PreparedStatement p;
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {
-				emaitza = re.getFloat("proabilitatea('"+prodA+"','"+prodB+"')");
+				emaitza = re.getFloat("funtzioprobabilitateOrokorra('"+prodA+"','"+prodB+"')");
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater motak", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du probabilitate funtzioa ikusi", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return emaitza;
 	}
+
+	public static float funtzioProbabilitateLokala(String prodA, String prodB, String nif) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		float emaitza = 0;
+		String query1 = ("select funtzioprobabilitateLokala('"+prodA+"','"+prodB+"', '"+nif+"')");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				emaitza = re.getFloat("funtzioprobabilitateLokala('"+prodA+"','"+prodB+"', '"+nif+"')");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du probabilitate funtzioa ikusi", "ERROR", JOptionPane.ERROR_MESSAGE);		
+		}
+		return emaitza;
+	}
+
 }

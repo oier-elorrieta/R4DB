@@ -9,8 +9,8 @@ public class BBDDKonexioa {
 	
 	private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
 	private static final String USUARIO = "root";
-	private static final String URL = "jdbc:mysql://localhost:3306/ethazi4";
-	private static final String CLAVE = "12345678";
+	private static final String URL = "jdbc:mysql://localhost:33060/ethazi4";
+	private static final String CLAVE = "elorrieta";
 
 	public static Connection getConexion() {
 
