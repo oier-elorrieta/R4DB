@@ -1,21 +1,19 @@
 package ModeloBBDD;
 
-import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.sql.Statement; 
 import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
 public class metodoaProbabilitatea {
-	
-	public static void ProbGuztiasartu(String prodA, String prodB,float emaitza) throws ClassNotFoundException, SQLException {
+
+	public static void ProbGuztiasartu(String prodA, String prodB, float emaitza, String fecha) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = "INSERT INTO hisestsem VALUES ('"+emaitza+"','"+stringfecha()+"','"+prodA+"','"+prodB+"')";
+		String query1 = "INSERT INTO hisestsem VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"')";
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
@@ -23,12 +21,12 @@ public class metodoaProbabilitatea {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(stringfecha());
 	}
-	
-	public static void ProbLocalasartu(String prodA, String prodB,float emaitza,String nif) throws ClassNotFoundException, SQLException {
+
+	public static void ProbLocalasartu(String prodA, String prodB, float emaitza, String nif, String fecha) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = "INSERT INTO hisestsemtd VALUES ('"+emaitza+"','"+stringfecha()+"','"+prodA+"','"+prodB+"','"+nif+"')";
+		String query1 = "INSERT INTO hisestsemtd VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"','"+nif+"')";
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
@@ -37,9 +35,8 @@ public class metodoaProbabilitatea {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void Fechasartu() throws ClassNotFoundException, SQLException {
-		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = "INSERT INTO fecha VALUES ('"+stringfecha()+"')";
 		try {
@@ -50,7 +47,7 @@ public class metodoaProbabilitatea {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static String stringfecha() {
 		Calendar cal= Calendar.getInstance();
 		int anio= cal.get(Calendar.YEAR);
@@ -58,12 +55,11 @@ public class metodoaProbabilitatea {
 		int dia=cal.get(Calendar.DAY_OF_MONTH);
 		int hora=cal.get(Calendar.HOUR);
 		int min=cal.get(Calendar.MINUTE);
-		//int seg=cal.get(Calendar.SECOND);
-		
-		String fecha=anio+"-"+mes+"-"+dia+" "+hora+":"+min;
+		int seg=cal.get(Calendar.SECOND);
+		String fecha=anio+"-"+mes+"-"+dia+" "+hora+":"+min+":"+seg;
 		return fecha;
 	}
-	
+
 	public static boolean konprobatufecha() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = ("select Fecha from fecha where Fecha= '"+stringfecha()+"'");
