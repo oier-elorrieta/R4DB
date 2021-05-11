@@ -21,7 +21,6 @@ public class metodoaProbabilitatea {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(stringfecha());
 	}
 
 	public static void ProbLocalasartu(String prodA, String prodB, float emaitza, String nif, String fecha) throws ClassNotFoundException, SQLException {
