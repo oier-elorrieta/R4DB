@@ -13,7 +13,7 @@ public class metodoaProbabilitatea {
 
 	public static void ProbGuztiasartu(String prodA, String prodB, float emaitza, String fecha) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = "INSERT INTO hisestsem VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"')";
+		String query1 = "INSERT INTO HistoricoEstablecimientoSemanal VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"')";
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
@@ -25,7 +25,7 @@ public class metodoaProbabilitatea {
 
 	public static void ProbLocalasartu(String prodA, String prodB, float emaitza, String nif, String fecha) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = "INSERT INTO hisestsemtd VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"','"+nif+"')";
+		String query1 = "INSERT INTO HistoricoEstablecimientoSemanalTd VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"','"+nif+"')";
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
