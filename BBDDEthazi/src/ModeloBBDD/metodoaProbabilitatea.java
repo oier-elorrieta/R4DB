@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class metodoaProbabilitatea {
 
 	public static void sartuDatuak(String erabiltzaile, String nomProduktua) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		int numTrans = ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk();  
 		String niflocal = metodoakKonprobaketak.konprobatuNIF(erabiltzaile);
 		String query1 = "INSERT INTO Probabilidad VALUES ('"+nomProduktua+"')";

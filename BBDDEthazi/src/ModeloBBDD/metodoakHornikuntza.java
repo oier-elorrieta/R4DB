@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakHornikuntza {
 	
-	public static String jasoHornikuntzarakoFabrikantea(String produktua) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String jasoHornikuntzarakoFabrikantea(String produktua) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String izenaFabrikantea = null;
 		String query1 = (Kontsultak.selectFabrikantea + "'" + produktua + "')");
 		try {
@@ -30,7 +30,7 @@ public class metodoakHornikuntza {
 	}
 
 	public static void sartuHornikuntza(int transferentziaZenbakia, String produktua, int produktu_kantitatea, double totala, char operazioMota) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		String query1 = (Kontsultak.insertHornikuntza + "(" + transferentziaZenbakia + ",'" + izenaFabrikantea + "')");
 		String query2 = (Kontsultak.insertTiene+"('" + produktua + "'," + transferentziaZenbakia + "," + produktu_kantitatea + "," + totala + ", '"+ operazioMota+"')");
@@ -47,8 +47,8 @@ public class metodoakHornikuntza {
 		}
 	}
 	
-	public static void stockGehitu(String produktua, int produktu_kantitatea, String NIF) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static void stockGehitu(String produktua, int produktu_kantitatea, String NIF) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.updateStock + "Stock + "+produktu_kantitatea+" where NIFLocal = '"+NIF+"' and NomProducto = '"+produktua+"'");
 		try { 
 			Statement s;

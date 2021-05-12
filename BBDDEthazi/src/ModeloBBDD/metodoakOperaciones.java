@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakOperaciones {
 	
-	public static void sartuOperaciones(int transferentziaZenbakia, double totala, String NIF, char operazioMota) {
-		Connection konekzioa = BBDDKonexioa.getConexion(); 
+	public static void sartuOperaciones(int transferentziaZenbakia, double totala, String NIF, char operazioMota) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.insertOperaciones + "('" + transferentziaZenbakia + "' ,'" + totala + "','" + NIF + "', '"+ operazioMota +"')");
 		try {
 			Statement s;

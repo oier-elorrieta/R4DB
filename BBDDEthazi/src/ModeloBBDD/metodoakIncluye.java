@@ -21,7 +21,7 @@ public class metodoakIncluye {
 	}
 
 	public static boolean begiratuIncluye(int platerKodea, int numTrans) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		boolean sartutaDago = false;
 		String query1 = (Kontsultak.selectIncluye + "'" + numTrans + "' and Cod_Plato = '" + platerKodea + "'");
 		try {
@@ -41,7 +41,7 @@ public class metodoakIncluye {
 
 	public static void updateIncluye(int platerKodea, int kantitatea, double prezioa, int numTrans)
 			throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.updateIncluye + "Num_Platos + " + kantitatea + ", PrecioActual = PrecioActual + "
 				+ prezioa + " where Cod_Plato = " + platerKodea + " and Num_Trans = "
 				+ (ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk() - 1) + "");
@@ -55,8 +55,8 @@ public class metodoakIncluye {
 		}
 	}
 
-	public static void sartuIncluye(int platerKodea, int kantitatea, double prezioa, String nif, int numTrans) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static void sartuIncluye(int platerKodea, int kantitatea, double prezioa, String nif, int numTrans) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.insertIncluye + "('" + numTrans + "', '" + platerKodea + "', '" + kantitatea
 				+ "', '" + prezioa + "')");
 		try {

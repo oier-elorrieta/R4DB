@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class metodoJasoTransakzioZbk {
 	
-	public static int jasoTransakzioZbk() throws SQLException, ClassNotFoundException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static int jasoTransakzioZbk() throws SQLException  {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectMaxNumTrans);
 		int TransakzioZbk = 0;
 		try {

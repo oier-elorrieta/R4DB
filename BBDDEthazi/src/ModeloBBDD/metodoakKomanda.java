@@ -3,12 +3,12 @@ package ModeloBBDD;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement; 
-import javax.swing.JOptionPane; 
+import javax.swing.JOptionPane;
 
 public class metodoakKomanda {
 	
 	public static void hasieratuOperaciones(int numTrans) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.insertNumTransOperaciones + "(" + numTrans + ", 'C')");
 		String query2 = (Kontsultak.insertKomanda + "(" + numTrans + ")");
 		try {
@@ -25,7 +25,7 @@ public class metodoakKomanda {
 	}
 
 	public static void sartuKomanda(String NIF, double totala) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.updateOperaciones + totala + " , NIF = '" + NIF
 				+ "' where Numtrans = (" + Kontsultak.selectMaxNumTransKomanda + ")");
 		try {
@@ -39,7 +39,7 @@ public class metodoakKomanda {
 	}
 
 	public static void ezabatuKomanda(int numTrans) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa =  ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.delete + numTrans);
 		try {
 			Statement s1;

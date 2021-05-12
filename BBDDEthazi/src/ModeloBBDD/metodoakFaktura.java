@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakFaktura {
 
-	public static boolean begiratuFakturanNIF(String NIF) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static boolean begiratuFakturanNIF(String NIF) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectNifFaktura+"'" + NIF + "'");
 		boolean nifDago = false;
 		try {
@@ -31,8 +31,8 @@ public class metodoakFaktura {
 		return nifDago;
 	}
 
-	public static void insertNifFaktura(String NIF, String izena_hartzaile, String abizena_hartzaile) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static void insertNifFaktura(String NIF, String izena_hartzaile, String abizena_hartzaile) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena_hartzaile + "', '" + abizena_hartzaile + "')");
 		try {
 			Statement st;
@@ -44,8 +44,8 @@ public class metodoakFaktura {
 		}
 	}
 
-	public static void sartuFaktura(int transferentziaZenbakia, String NIF, String izena_hartzaile, String abizena_hartzaile) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static void sartuFaktura(int transferentziaZenbakia, String NIF, String izena_hartzaile, String abizena_hartzaile) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		boolean nifDago = begiratuFakturanNIF(NIF);
 		if (nifDago == false) {
 			insertNifFaktura(NIF, izena_hartzaile, abizena_hartzaile);

@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakOfrece {
 
-	public static int aukeratuIncluyeKodeak() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static int aukeratuIncluyeKodeak() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectCountCodPlato+"("+Kontsultak.selectMaxNumTrans+")");
 		int zbk = 0;
 		try {
@@ -29,8 +29,8 @@ public class metodoakOfrece {
 		return zbk;
 	}
 
-	public static int[] platerrenKodeak() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static int[] platerrenKodeak() throws SQLException {
+		Connection konekzioa =  ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectCodPlato+"("+Kontsultak.selectMaxNumTrans+")");
 		int[] kodeak = new int[aukeratuIncluyeKodeak()];
 		int i = 0;
@@ -50,7 +50,7 @@ public class metodoakOfrece {
 		return kodeak;
 	}
 
-	public static void localOfrece(String nif) {
+	public static void localOfrece(String nif) throws SQLException {
 		int[] kodeak = platerrenKodeak();
 		for (int i = 0; i < kodeak.length; i++) {
 			if (begiratuLocalOfrece(nif, kodeak[i]) == false) {
@@ -59,8 +59,8 @@ public class metodoakOfrece {
 		}
 	}
 
-	public static boolean begiratuLocalOfrece(String nif, int platerKodea) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static boolean begiratuLocalOfrece(String nif, int platerKodea) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		boolean platerraDago = false;
 		String query1 = (Kontsultak.selectOfrece+"'" + nif + "' and Cod_Plato = '" + platerKodea + "'");
 		try {
@@ -78,8 +78,8 @@ public class metodoakOfrece {
 		return platerraDago;
 	}
 
-	public static void insertLocalOfrece(String nif, int platerKodea) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static void insertLocalOfrece(String nif, int platerKodea) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.insertOfrece+"('" + nif + "','" + platerKodea + "')");
 		try {
 			Statement s1;

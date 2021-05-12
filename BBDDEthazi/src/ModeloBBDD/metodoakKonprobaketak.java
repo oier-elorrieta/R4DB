@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakKonprobaketak {
 
-	public static boolean begiratuNAN(String NAN) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static boolean begiratuNAN(String NAN) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectDNI+ " where DNI = '"+NAN+"'");
 		boolean badago = false;
 		try {
@@ -30,8 +30,8 @@ public class metodoakKonprobaketak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static boolean begiratuNIF(String nif) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static boolean begiratuNIF(String nif) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectNifLocal+"'"+nif+"'");
 		boolean ondoDago = false;
 		try {
@@ -51,8 +51,8 @@ public class metodoakKonprobaketak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static int begiratuStock(String produktua, String nif) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static int begiratuStock(String produktua, String nif) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectStockNomProducto + " '" + produktua + "' and nifLocal = '" + nif + "' ");
 		int produktuKantitatea = 0;
 		try {
@@ -72,8 +72,8 @@ public class metodoakKonprobaketak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectErabiltzailea + "'" + erabiltzailea + "'");
 		String erroreaLogeatzean = null;
 		try {
@@ -103,8 +103,8 @@ public class metodoakKonprobaketak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String konprobatuNIF(String erabiltzailea) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String konprobatuNIF(String erabiltzailea) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectNIF + "'" + erabiltzailea + "'");
 		String NIF = null;
 		try {
@@ -124,8 +124,8 @@ public class metodoakKonprobaketak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String konprobatuLokala(String erabiltzailea) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String konprobatuLokala(String erabiltzailea) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectLokalaMota + "'" + erabiltzailea + "')");
 		String Tipo = null;
 		try {
@@ -145,8 +145,8 @@ public class metodoakKonprobaketak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String konprobatuLokalarenIzena(String NIF) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String konprobatuLokalarenIzena(String NIF) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectLokalarenIzena + "'" + NIF + "'");
 		String LokalarenIzena = null;
 		try {
