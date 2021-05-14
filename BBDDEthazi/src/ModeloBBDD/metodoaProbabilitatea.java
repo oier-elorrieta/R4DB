@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 public class metodoaProbabilitatea {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void ProbGuztiasartu(String prodA, String prodB, float emaitza, String fecha) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = "INSERT INTO HistoricoEstablecimientoSemanal VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"')";
@@ -23,6 +25,8 @@ public class metodoaProbabilitatea {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void ProbLocalasartu(String prodA, String prodB, float emaitza, String nif, String fecha) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = "INSERT INTO HistoricoEstablecimientoSemanalTd VALUES ('"+emaitza+"','"+fecha+"','"+prodA+"','"+prodB+"','"+nif+"')";
@@ -34,6 +38,8 @@ public class metodoaProbabilitatea {
 			e.printStackTrace();
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static void Fechasartu() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -47,6 +53,8 @@ public class metodoaProbabilitatea {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String stringfecha() {
 		Calendar cal= Calendar.getInstance();
 		int anio= cal.get(Calendar.YEAR);
@@ -59,6 +67,8 @@ public class metodoaProbabilitatea {
 		return fecha;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static boolean konprobatufecha() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = ("select Fecha from fecha where Fecha= '"+stringfecha()+"'");

@@ -10,7 +10,7 @@ public class metodoakOperaciones {
 	
 	public static void sartuOperaciones(int transferentziaZenbakia, double totala, String NIF, char operazioMota) {
 		Connection konekzioa = BBDDKonexioa.getConexion(); 
-		String query1 = (Kontsultak.insertOperaciones + "('" + transferentziaZenbakia + "' ,'" + totala + "','" + NIF + "', '"+ operazioMota +"')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + transferentziaZenbakia + "' , current_date() ,'" + totala + "','" + NIF + "', '"+ operazioMota +"')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

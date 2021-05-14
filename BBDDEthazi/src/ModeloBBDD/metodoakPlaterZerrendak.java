@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakPlaterZerrendak {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String[] platerMotak() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectPlaterMotak);
@@ -30,6 +32,8 @@ public class metodoakPlaterZerrendak {
 		return platerMotak;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String[] platerMota(String platerMota, String tipoa) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectPlaterraMota + " '" + platerMota + "' and TipoPosicion = '" + tipoa + "'");
@@ -51,6 +55,8 @@ public class metodoakPlaterZerrendak {
 		return platerMotak;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String[] platerMotaArabera(String platerMota) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectPlaterraMota + "'" + platerMota + "'");
@@ -72,6 +78,8 @@ public class metodoakPlaterZerrendak {
 		return platerMotak;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int zenbatPlaterMotaBakoitzeko(String platerMota) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = ("SELECT count('" + platerMota + "') from plato where TipoDePlato = '" + platerMota + "';");
@@ -91,6 +99,8 @@ public class metodoakPlaterZerrendak {
 		return i;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int jasoPlaterKodea(String platerra) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		int platerKodea = 0;

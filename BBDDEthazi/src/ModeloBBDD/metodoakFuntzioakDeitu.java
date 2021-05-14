@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakFuntzioakDeitu {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static double dirutotala() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		double diruTotala = 0;
@@ -26,6 +28,8 @@ public class metodoakFuntzioakDeitu {
 		}
 		return diruTotala;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	public static float funtzioProbabilitateOrokorra(String prodA, String prodB) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -46,6 +50,8 @@ public class metodoakFuntzioakDeitu {
 		return emaitza;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static float funtzioProbabilitateLokala(String prodA, String prodB, String nif) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		float emaitza = 0;

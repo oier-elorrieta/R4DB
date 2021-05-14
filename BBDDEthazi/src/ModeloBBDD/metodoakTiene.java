@@ -13,6 +13,8 @@ import Modelo.Karritoa;
 
 public class metodoakTiene {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile) throws ClassNotFoundException, SQLException {
 		for (int i = 0; i < karroa.size(); i++) {
 			String elikagaia = karroa.get(i).getElikagaia();
@@ -32,10 +34,12 @@ public class metodoakTiene {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void insertTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();  
 		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', " + (ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk() - 1) + ", " + kopurua
-				+ ", " + prezioa + ", '"+ operazioMota +"')");
+				+ ", " + prezioa + ", '"+ operazioMota +"', current_date())");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -45,6 +49,8 @@ public class metodoakTiene {
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du gehitu tiene taulari", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static boolean begiratuTiene(String Elikagaia, int numTrans) {
 		boolean egia = false;
@@ -66,6 +72,8 @@ public class metodoakTiene {
 		return egia;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void updateTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException { 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateTiene+"N_Unidades + " + kopurua + ", Precio = Precio + " + prezioa
@@ -81,6 +89,8 @@ public class metodoakTiene {
 
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void gehituVende(String elikagaia, String erabiltzailea) throws ClassNotFoundException, SQLException {
 		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
 			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
@@ -91,6 +101,8 @@ public class metodoakTiene {
 			}
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	public static double produktuDirua(String elikagaia) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -110,6 +122,8 @@ public class metodoakTiene {
 		}
 		return totala;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static String jasoOperazioMota () {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -130,6 +144,8 @@ public class metodoakTiene {
 		return operazioMota;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String begiratuProduktuMota (String produktua) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String produktuMota = null;
@@ -149,6 +165,8 @@ public class metodoakTiene {
 		return produktuMota;
 	}
 	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void updateOperaciones() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateOperaciones + dirutotala() + " where NumTrans = (select max(NumTrans) from tiene)");
@@ -161,6 +179,8 @@ public class metodoakTiene {
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du kalkulatu operazio totala", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	public static double dirutotala() {
 		Connection konekzioa = BBDDKonexioa.getConexion();

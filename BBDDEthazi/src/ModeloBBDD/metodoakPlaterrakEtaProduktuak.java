@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 import Modelo.Produktua;
 
-
-
 public class metodoakPlaterrakEtaProduktuak {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int produktuKantitatea() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectProduktuKantitatea);

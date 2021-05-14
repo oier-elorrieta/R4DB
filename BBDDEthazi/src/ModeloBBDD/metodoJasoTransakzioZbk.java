@@ -11,7 +11,7 @@ public class metodoJasoTransakzioZbk {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectMaxNumTrans);
 		int TransakzioZbk = 0;
-		try {
+		try { 
 			ResultSet re;
 			PreparedStatement p;
 			p = konekzioa.prepareStatement(query1);
