@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakKomanda {
 	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void hasieratuOperaciones(int numTrans) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.insertNumTransOperaciones + "(" + numTrans + ", 'C')");
@@ -24,6 +26,8 @@ public class metodoakKomanda {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void sartuKomanda(String NIF, double totala) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateOperaciones + totala + " , NIF = '" + NIF
@@ -38,6 +42,8 @@ public class metodoakKomanda {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void ezabatuKomanda(int numTrans) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.delete + numTrans);

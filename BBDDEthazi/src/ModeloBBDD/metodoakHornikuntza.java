@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakHornikuntza {
 	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String jasoHornikuntzarakoFabrikantea(String produktua) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = null;
@@ -29,6 +31,8 @@ public class metodoakHornikuntza {
 		return izenaFabrikantea;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void sartuHornikuntza(int transferentziaZenbakia, String produktua, int produktu_kantitatea, double totala, char operazioMota) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
@@ -46,6 +50,8 @@ public class metodoakHornikuntza {
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du hornikuntza egin", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	public static void stockGehitu(String produktua, int produktu_kantitatea, String NIF) {
 		Connection konekzioa = BBDDKonexioa.getConexion();

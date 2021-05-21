@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakFaktura {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static boolean begiratuFakturanNIF(String NIF) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectNifFaktura+"'" + NIF + "'");
@@ -30,6 +32,8 @@ public class metodoakFaktura {
 		}
 		return nifDago;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static void insertNifFaktura(String NIF, String izena_hartzaile, String abizena_hartzaile) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -43,6 +47,8 @@ public class metodoakFaktura {
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu NIF faktura", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuFaktura(int transferentziaZenbakia, String NIF, String izena_hartzaile, String abizena_hartzaile) {
 		Connection konekzioa = BBDDKonexioa.getConexion();

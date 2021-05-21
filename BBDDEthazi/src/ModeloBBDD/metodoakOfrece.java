@@ -9,6 +9,8 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class metodoakOfrece {
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static int aukeratuIncluyeKodeak() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -28,7 +30,9 @@ public class metodoakOfrece {
 		}
 		return zbk;
 	}
-
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int[] platerrenKodeak() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectCodPlato+"("+Kontsultak.selectMaxNumTrans+")");
@@ -50,6 +54,8 @@ public class metodoakOfrece {
 		return kodeak;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void localOfrece(String nif) {
 		int[] kodeak = platerrenKodeak();
 		for (int i = 0; i < kodeak.length; i++) {
@@ -59,6 +65,8 @@ public class metodoakOfrece {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static boolean begiratuLocalOfrece(String nif, int platerKodea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		boolean platerraDago = false;
@@ -78,6 +86,8 @@ public class metodoakOfrece {
 		return platerraDago;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static void insertLocalOfrece(String nif, int platerKodea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.insertOfrece+"('" + nif + "','" + platerKodea + "')");

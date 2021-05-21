@@ -9,6 +9,8 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class metodoakIncluye {
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static void incluye(int platerKodea, int kantitatea, double prezioa, String nif)
 			throws ClassNotFoundException, SQLException {
@@ -20,6 +22,8 @@ public class metodoakIncluye {
 		}
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static boolean begiratuIncluye(int platerKodea, int numTrans) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		boolean sartutaDago = false;
@@ -38,6 +42,8 @@ public class metodoakIncluye {
 		}
 		return sartutaDago;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static void updateIncluye(int platerKodea, int kantitatea, double prezioa, int numTrans)
 			throws ClassNotFoundException, SQLException {
@@ -54,6 +60,8 @@ public class metodoakIncluye {
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du gehitu tabla incluyeri", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuIncluye(int platerKodea, int kantitatea, double prezioa, String nif, int numTrans) {
 		Connection konekzioa = BBDDKonexioa.getConexion();

@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 public class metodoakFuntzioakDeitu {
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static double dirutotala() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		double diruTotala = 0;
@@ -26,4 +28,47 @@ public class metodoakFuntzioakDeitu {
 		}
 		return diruTotala;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	public static float funtzioProbabilitateOrokorra(String prodA, String prodB) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		float emaitza = 0;
+		String query1 = ("select funtzioprobabilitateOrokorra('"+prodA+"','"+prodB+"')");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				emaitza = re.getFloat("funtzioprobabilitateOrokorra('"+prodA+"','"+prodB+"')");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du probabilitate funtzioa ikusi", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+		return emaitza;
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+	
+	public static float funtzioProbabilitateLokala(String prodA, String prodB, String nif) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		float emaitza = 0;
+		String query1 = ("select funtzioprobabilitateLokala('"+prodA+"','"+prodB+"', '"+nif+"')");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				emaitza = re.getFloat("funtzioprobabilitateLokala('"+prodA+"','"+prodB+"', '"+nif+"')");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du probabilitate funtzioa ikusi", "ERROR", JOptionPane.ERROR_MESSAGE);		
+		}
+		return emaitza;
+	}
+
 }
